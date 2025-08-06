@@ -1,0 +1,140 @@
+NEXT:
+
+# ANTES DE EMPEZAR
+- Todo el curso esta con react router
+- Se usa versión 13 y 14 de Next
+- Descargar imágenes de Docker en una terminal de comandos:
+docker pull mongo:6.0.6
+docker pull postgres:15.3
+- Las imágenes se pueden eliminar luego en Docker desktop
+- Versión Node 16 o superior
+
+
+# seccion 2: INTRODUCCION A NEXT:
+React Server Components
+Client Components
+TurboPack
+Metadata
+Metatags
+Layouts y Layouts anidados
+Poco de Tailwind
+Next Link
+usePathName Hook
+Nuevo sistema de rutas de Next
+
+
+## NOTAS:
+- NEXT es un meta framework, un framework basado en un framework
+- SEO friendly (SEARCH ENGINE OPTIMIZATION)
+- Todo lo de React funciona en Next
+- Menos dependencias, viene con herramientas dedicadas
+- Recomendado para server-rendering
+- Asume que el backend es Node y tiene muchas herramientas utiles
+- Desde la version 13 de Next todo cambió
+- En caso de ver un error ServerError: TypeError: .... Pueden dejar de usar turbopack al correr el ambiente desarrollo (deben eliminar la bandera --turbo en el package.json -> scripts -> dev) y todo debería funcionar tal como se espera. Turbopack aún se encuentra en beta por lo cual no es recomendado hacer uso del mismo en entornos de producción.
+- Server components es que el cliente no va a recibir javascript a menos que no sea necesario
+- En el layout o en cada una de nuestras paginas se puede configurar la metadata https://developers.google.com/search/docs/crawling-indexing/special-tags?hl=es
+- Si la pagina no se le configura la metadata, se usa la del layout
+- mr + tab es el snippet para la construir la base de la metadata
+- Los layouts pueden ser anidados
+- snippet lrc para crear un layout component
+- Si nombro una carpeta con () es para decirle a Next que no queremos que ese nombre sea parte de la url de la pagina
+- En la raiz del proyecto se puede crear una carpeta para componentes transversales
+- Se puede precargar una pagina antes que el usuario cliquee
+- Un console log no se muestra en el navegador, pero si en la terminal donde se pone a correr la aplicación
+- Por defecto todos los componentes son asincronos
+- Por lo general, todo sigue funcionando incluso si se deshabilita javascript
+- Presentation Server componentes Strategy
+- Si un componente no trabaja con server component, entonces toca encapsularlo. Se recomienda que todo sea server component
+- Con Tailwind se le puede pasar varia clases a una clase con aply en el arhivo css
+- usePathname para tomar la url de la pagina actual
+- texto 'use client'; al inicio del archivo del componente es para generar algo por el lado del cliente, usualmente para cosas interactivas como botones
+- 
+
+--------------------------------------------------------------
+# seccion 3  Despliegues a Vercel y Docker
+Generar el build de producción / distribución
+Probar el procedimiento de construcción y ejecución
+Desplegar la aplicación en Vercel (Creado por la misma gente de Next.js)
+Generar una imagen de Docker
+Crear la imagen de Docker siguiendo las prácticas recomendadas por Next
+Correr la aplicación desde Docker Desktop
+
+
+## NOTAS:
+- 
+
+
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+
+# seccion 
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------

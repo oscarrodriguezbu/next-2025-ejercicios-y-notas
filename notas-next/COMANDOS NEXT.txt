@@ -1,0 +1,13 @@
+COMANDOS NEXT:
+
+npx create-next-app nombreProyecto (ABRE UNA SERIE DE PASOS: SELECCIONAR TYPESCRIPT, ESLINT SI, TAILWIND SI, SRC/ directory NO, App Router SI, import alieas No)
+
+npm run dev para arrancar el proyecto
+
+
+
+
+
+
+
+
