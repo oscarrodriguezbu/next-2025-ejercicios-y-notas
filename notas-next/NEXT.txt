@@ -62,7 +62,9 @@ Correr la aplicación desde Docker Desktop
 
 
 ## NOTAS:
-- 
+- El build de produccion es mucho mas rapido que el de desarrollo
+- Vercel creó Next y está optimizado para que los proyectos de Next se suban ahí
+- Se despliega en una imagen de docker
 
 
 --------------------------------------------------------------
