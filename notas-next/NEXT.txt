@@ -65,24 +65,54 @@ Correr la aplicación desde Docker Desktop
 - El build de produccion es mucho mas rapido que el de desarrollo
 - Vercel creó Next y está optimizado para que los proyectos de Next se suban ahí
 - Se despliega en una imagen de docker
+- En la clase se propone dos formas de subir, una configuracion basica y sencilla y otra que es la recomendada por docker
 
 
 --------------------------------------------------------------
 
-# seccion 
-
+# seccion 4 Server Side + Cliente Side Rendering
+Puntualmente veremos:
+Tailwind classes
+Estructura de un dashboard
+useState
+use-client
+Next Link
+Next Image
+Estructura de proyecto
+Permitir imágenes externas
+Entre otras cosas
 
 
 ## NOTAS:
-- 
+- Componente para imagenes de Next es super recomendado. https://nextjs.org/docs/app/api-reference/components/image
+- Para el curso, tener en cuenta que se debe usar react router con next para continuar con la configuracion desarrollada en la clase
+- Ir a Next config para aceptar imagenes con urls externas
+- Next image se encarga de optimizar las imagenes y se cargan bajo demanda
+- Al hacer cambios de estado como hooks o al usar componentes de otras librerias, toca usar 'use client'; al inicio de ese archivo, pero se pierde los beneficios del server component
+- Al ser 'use client'; se pierde la posibilidad de configuracion de la metadata, aunque se soluciona creando un componente hijo que tenga el 'use client'; y el padre quedaria con la function del server side
+
+
 --------------------------------------------------------------
 
-# seccion 
-
+# seccion 5, Generación Dinamica SSR (SERVER SIDE RENDERING)
+Manejo de Metadata dinámica
+Páginas generadas del lado del servidor - SGR
+Páginas de errores
+Validación de argumentos
+Redirecciones
+Prioridad de Carga de imágenes
+Tipos de revalidación con Fetch y sin Fetch
+Estructuras HTML con Tailwind
+Entre otras cosas
 
 
 ## NOTAS:
+- Todo lo que se haga con fetch se guarda en caché
+- El revalidate guarda en cache durante el tiempo que se le especifique, o si no se quiere cache, se lo coloca cache no store
+- Mas info https://nextjs.org/docs/app/getting-started/fetching-data
 - 
+
+
 --------------------------------------------------------------
 
 # seccion 
