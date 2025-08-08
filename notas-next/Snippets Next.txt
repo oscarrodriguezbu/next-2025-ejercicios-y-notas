@@ -3,4 +3,5 @@ Snippets Next:
 - mr + tab es el snippet para la construir la base de la metadata
 - snippet lrc para crear un layout component
 - prc para crear un functional component o rafc
+- rxslice para generar un slice de Redux
 - 

@@ -46,7 +46,7 @@ Nuevo sistema de rutas de Next
 - Por lo general, todo sigue funcionando incluso si se deshabilita javascript
 - Presentation Server componentes Strategy
 - Si un componente no trabaja con server component, entonces toca encapsularlo. Se recomienda que todo sea server component
-- Con Tailwind se le puede pasar varia clases a una clase con aply en el arhivo css
+- Con Tailwind se le puede pasar varias clases a una clase con aply en el arhivo css
 - usePathname para tomar la url de la pagina actual
 - texto 'use client'; al inicio del archivo del componente es para generar algo por el lado del cliente, usualmente para cosas interactivas como botones
 - 
@@ -110,36 +110,77 @@ Entre otras cosas
 - Todo lo que se haga con fetch se guarda en caché
 - El revalidate guarda en cache durante el tiempo que se le especifique, o si no se quiere cache, se lo coloca cache no store
 - Mas info https://nextjs.org/docs/app/getting-started/fetching-data
-- 
+- No se puede tener un a dentro de un Link
+- priority={false} //es para el lazy load en un Image component
+- Se crea la metada en la pagina de pokemon de dorma dinamica para que cargue el nombre del pokemon seleccionado en el tabulador
+- Debug forma rapida en visual studio code. CTRL + SHFT + P, debug npm script, dev. Se puede hacer un escript y colocar por ejemplo un F5 para hacer todo eso
+- Se crea un nuevo component not-found para evitar que en la url salga algun error y redireccione
+- Hay una function notFound para redireccionar a la pagina de not found
+- En tailwind toca especificar en su carpeta de configuracion las carpetas a las que se les quiere aplicar sus herramientas
+
 
 
 --------------------------------------------------------------
 
-# seccion 
+# seccion 6 Incremental & Static Generation
+Esta sección está dedicada principalmente a la generación estática de contenido, el objetivo principal de este mecanismo, es adelantarnos a las posibles solicitudes de nuestros usuarios y tener generadas de antemano las posibles páginas que ellos van a solicitar.
+
+Es decir, en "build time" o tiempo de construcción, crearemos todas las páginas acorde a nuestras reglas, y luego le añadiremos condiciones de re-valicación para que se renueven cuando el momento lo amerite.
+
+
+## NOTAS:
+- Consiste en tener listas ciertas paginas antes de que el usuario entre en ellas
+- Evitar colocar ids en la url, es mejor colocar nombres o identificador unico
+- La sección del pokemon soporta por nombre y por id
+
+
+--------------------------------------------------------------
+
+# seccion 7 Global State - Redux y LocalStorage
+Esta sección tiene por objetivo principal dos cosas:
+Manejo de Favoritos
+Trabajar LocalStorage con Server components
+Esto llevará indiscutiblemente a inconvenientes, pero de antemano les digo, cuando trabajemos las aplicaciones reales con bases de datos y Cookies, no es necesario tanta complejidad que se debe de colocar para trabajar y construir aplicaciones que usen el local storage en Next y ese localstorage modifique lo que se genera en pantalla.
+
+Pero sin embargo, esta sección tiene un alto valor educativo que es necesario comprender, porque es cuestión de tiempo para que choquemos con este problema.
 
 
 
 ## NOTAS:
-- 
+- El provider de redux se usa en el layout principal en esta clase
+- 'use client'; en el provider que se crea en la carpeta store
+- El archivo del store se configura en el index de esa carpeta
+- Hooks para usar en redux: useAppDispatch y useAppSelector
+- Cada reducer tiene su state y su action en el param. Debe producir un nuevo estado basado en la accion
+- En next se puede crear un restfull api. Por ejemplo en la carpata api se hace la configuracion y al final tenemos por ejemplo la url para hacer la peticion http://localhost:3000/api/counter
+- En request.method viene metodos, cookies etc
+- No colocar page y route en el mismo archivo
+- Basicamente casi todo lo que se aplica en la parte de pages se aplica los routes
+- El counter tiene un bug que primero se muestra un 5 y luego el 100, se puede seguir optimizando pero el profe Fernando va a explicar eso en otras clases mas adelante
+
+
 --------------------------------------------------------------
 
-# seccion 
+# seccion 8 Estado Global - Favoritos
+En esta sección trabajaremos con más elementos de Material UI y también crearemos nuestra propia implementación de un Drag and Drop (sin librerías de terceros)
 
+El objetivo principal es tener el control de las entradas y poder jugar con ellas a nuestra voluntad.
 
 
 ## NOTAS:
-- 
+- El local storage solo se manipula del lado del cliente
+- Esta clase es solo demostrativa, en otras secciones se hace las configuraciones necesarias mucho mas facil y de otra forma
+- No se recomienda guradar en local storage en el reducer
+- Las cookies son persistentes como el localstorage, pero pueden enviarse por peticiones http
+- Una de las formas recomendadas para guardar en localstorage es con middlewares
+- Al final del ejercicio no se usa el middleware porque genera muchos problemas y se crea una propiedad favorites en el store para no mutar el state raiz
+
+
+
 --------------------------------------------------------------
 
-# seccion 
+# seccion 9: Next Api Routes - Restfull handlers
 
-
-
-## NOTAS:
-- 
---------------------------------------------------------------
-
-# seccion 
 
 
 

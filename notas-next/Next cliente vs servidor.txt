@@ -1,0 +1,11 @@
+Next cliente vs servidor
+
+En Next.js, cuando se habla de "del lado del cliente" y "del lado del servidor", se refiere a dónde se ejecuta el código y cuándo se renderiza la página o componente. Esto es clave porque Next.js mezcla dos mundos: React tradicional en el navegador y renderizado en el servidor.
+
+
+|                | Cliente                        | Servidor                        |
+| -------------- | ------------------------------ | ------------------------------- |
+| **Ejecuta en** | Navegador                      | Node.js                         |
+| **Momento**    | Después de la carga inicial    | Antes de enviar HTML            |
+| **SEO**        | Malo si depende solo de JS     | Excelente                       |
+| **Uso típico** | Interactividad y datos en vivo | Datos iniciales, SEO, seguridad |
