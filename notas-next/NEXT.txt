@@ -180,31 +180,210 @@ El objetivo principal es tener el control de las entradas y poder jugar con ella
 --------------------------------------------------------------
 
 # seccion 9: Next Api Routes - Restfull handlers
+Puntualmente veremos:
+READ
+Paginaciones
+Update
+Post
+SEED
+Docker
+Postgres
+Prisma
+Prisma + Next
+Yup - Validador
+
+
+## NOTAS:
+- Actualmente 2025 el tema del restfull api de next no es tan bueno como nest
+- Se configura imagen de postgres en docker y en next con el archivo docker-compose.yml
+- Se usó postgres:15.3
+- Se levanta la base de datos en postgres en docker y luego se abre en un gestor de bases de datos como table plus
+- Prisma sirve para ahorrarnos escribir querys para la database o algo asi
+- Prisma es muy bueno pero no nos deja mucho control para la database, como triggers y cositas asi
+- En el archivo schema.prisma se configuran los modelas de la base de datos
+- Se crea una semilla con ayuda de prisma, eso consiste en generar data dummy para pruebas
+- Se instala yup para validar los endpoints
+- Prisma es como mongoose
+
+
+--------------------------------------------------------------
+
+# seccion 10 Next + RestAPI AdmintTodos
+Consumo de nuestro RESTful Api
+Client y Server Side Rendering
+Refresh de una ruta sin afectar estados (nuevo de Next)
+Prisma pull y push para actualizar modelos
+
+
+## NOTAS:
+- npx prisma db pull con prisma para traer toda la data y el modelo de la base de datos, luego npx prisma generate
+- Si se hace algun cambio en la estructura del modelo en schema.prsma en next, luego npx prisma migrate dev, luego seleccionar si, escrbir el nombre de la migracion que es algo asi como un commit y la base de datos queda en sincronia con el schema 
+- Si quiero hacer un cambio en el modelo pero sin los riesgos del  paso anterior, entonces coloca npx prisma db push y eso sincroniza la base de datos sin pasar con migraciones
+- router.refresh(); Actualiza los componentes que son afectados:
+
+
+--------------------------------------------------------------
+
+# seccion 11 Server actions - optimistic updates - Next 14+
+Esta tiene por objetivo usar características nuevas de Next y React como son:
+Server Actions
+useOptimistic
+Server Actions marca un antes y después de comunicación cliente / servidor, ya que antes, ocupábamos una llamada HTTP mediante un restful API para realizar un cambio desde el cliente... ahora no es necesario.
+La parte del hook de React useOptimistic, nos ayudará a que podamos realizar cambios en el UI aunque no tengamos las respuestas esperadas de procesos asíncronos.
+
+
+## NOTAS:
+- Actualizaciones optimistas permiten hacer cambios visuales cuando el servidor esta muy demorado
+- Se instala nuevo paquete check updates. nc --update para subir las versiones del proyecto (pero actualmente no es necesario), luego npm i
+- El server actions no necesita crear cosas adicionales, hace que todo parezca simples funciones de javascript
+- server actions son como un patron
+- Se crean en una carpeta llamada actions
+- Para que algo se ejecute especificamente del lado del servidor colocar 'use server';
+- revalidatePath('/dashboard/server-todos'); //? es para que cargue lo que cambió
+- Hay dos formas de mutar data, hay un tema de mutacion que introduce next en la version 14 pero no es muy flexible actualmente
+- los server actions en los eventos como el click, toca enviarlos de esta forma: () => deleteCompleted()
+- useOptimistic hook de react: Es muy parecido al use state, recibe el estado inicial y un callback
+  const [todoOptimistic, toggleOptimistic] = useOptimistic(
+    todo,
+    (state, newCompleteValue: boolean) => ({ ...state, complete: newCompleteValue })
+  );
+- sucede un warning pero se soluciona con un transition de react, exactamente el startTransition el cual es un callback que toca meterle lo que se quiere hacer la transicion
+- dynamic y revalidate de next para hacer que la pagina cambie si la base de datos cambia. Carga cosas al pasar por la pantalla, como un useeefect o algo asi. Solo aplica para Pages, Layout o Rute Handler
+- export const dynamic = 'force-dynamic'; se pega al inicio del archivo
+
+
+
+--------------------------------------------------------------
+
+# seccion 12 Cookies - Server y Client Side 
+Cookies del lado del servidor
+Cookies del lado del cliente
+Carrito de compras
+Manipulación de cookies
+
+
+## NOTAS:
+- Las cookies pueden tratarse del lado del servidor o del cliente
+- Cualquier peticion http, viajan las cookies
+- En Next, al trabajar con server components, se puede trabajar mas facil con las cookies
+- Se usa paquete cookies-next del lado del cliente
+- Se puede configurar las cookies como por ejemplo, expiracion etc
+- Del lado del servidor se puede obtener las cookies con las herramientas de Next
+- La comunicacion entre componentes no cercanos puede ser mediante las cookies, toda la seccion de productos y carrito de compras se hizo con cookies
+- Mantener informacio NO sensible en las cookies
+
+
+--------------------------------------------------------------
+# seccion 13 Auth.js - Autenticacion de proteccion de rutas
+Esta es una sección dedicada enteramente a la autenticación de los usuarios, trabajaremos con Auth.js para tener la base de autenticación inicial y luego la ajustaremos a necesidades personalizadas.
+
+Puntualmente veremos:
+Auth.js
+Proveedores
+Google
+Github
+Credenciales personalizadas
+Encriptación de contraseña
+Relaciones de base de datos
+Sesión de usuario
+Server y Client side validation
+Campos adicionales de usuario
+Modificación global de usuario de Auth.js
+Mucho más
+Es una sección que nos ayudará a poder controlar la sesión y a poder tener identificados los usuarios de nuestra aplicación y dashboard administrativo.
+
+
+
+## NOTAS:
+- Se usa Auth js para manejar la autenticacion, permite tener el control de la session del lado del cliente o servidor, algo asi como firebase. Auth se integra muy bien con Next
+- Luego toca crear los endpoints respectivos en Next, algo asi src\app\api\auth\[...nextauth]\route.ts
+- Toca ir a GitHub y google para configurar algunas cosillas para iniciar con esas paginas
+- Se agrega un provider en RootLayout para trabajar con el hook de react de session
+- Los usuarios modifican los todos sin afectar los datos de otros usuarios
+
+
+--------------------------------------------------------------
+# seccion 14 E-Commerce - Diseño TesloShop
 
 
 
 
 ## NOTAS:
 - 
---------------------------------------------------------------
 
-# seccion 
+
+--------------------------------------------------------------
+# seccion
 
 
 
 ## NOTAS:
 - 
 --------------------------------------------------------------
-
-# seccion 
+# seccion
 
 
 
 ## NOTAS:
 - 
 --------------------------------------------------------------
+# seccion
 
-# seccion 
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
+
+
+
+## NOTAS:
+- 
+--------------------------------------------------------------
+# seccion
 
 
 

@@ -4,4 +4,5 @@ Snippets Next:
 - snippet lrc para crear un layout component
 - prc para crear un functional component o rafc
 - rxslice para generar un slice de Redux
+- raq para generar un request en un api de route
 - 

@@ -6,6 +6,15 @@ npm run dev para arrancar el proyecto
 
 
 
+-------------------------------------------
+
+COMANDOS DOCKER
+docker compose up -d para levantar la base de datos
+
+
+
+
+
 
 
 
