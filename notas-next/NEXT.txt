@@ -304,89 +304,277 @@ Es una sección que nos ayudará a poder controlar la sesión y a poder tener id
 
 --------------------------------------------------------------
 # seccion 14 E-Commerce - Diseño TesloShop
-
-
+En esta sección empezaremos a trabajar en la maquetación de nuestra aplicación de e-commerce "TesloShop"
+Aquí aprenderemos sobre:
+Server Components
+Client Components
+Zustand
+Tailwind
+CLSX
+Estructura de directorios
+Layouts anidados
+Componentes reutilizables
+Efectos de Blur con Tailwind
+Efectos con las imágenes de productos
+Rutas de nuestra aplicación
+Y mucho más.
 
 
 ## NOTAS:
-- 
+- import { inter } from "@/config/fonts"; en el layout principal para configurar las fuentes
+- cuando en una carpeta de un layout no quiere que tenga un nombre en la ruta propio, se le coloca parentesis como: (shop)
+- Carpeta que requieren un valor dinamico como id, se les nombra [id]
+- un slug es un identificador humanamente legible, algo asi como lo que usa amazon en sus productos
+- onMouseEnter y onMouseLeave para cambiar las imagenes de la tienda
+- Se crea un store con zustand para manipular el sidebar
+- se instala clsx que permite hacer clases condicionales con tailwind
 
 
 --------------------------------------------------------------
-# seccion
-
+# seccion 15 E - Commerce Diseño parte 2
+Puntualmente veremos:
+Tailwind
+Multiples layouts
+Pantallas de error
+Slideshows
+Slideshows para teléfonos
+Navegación
+Redirecciones
+Tablas
+Etc
 
 
 ## NOTAS:
-- 
+- Se instala swiper para trabajar como carrusel con las imagenes
+- Se crea un carrusel para escritorio y otro para movil para no tener tantas condiciones, la validacion se hace con las clases responsivas de tailwind
+
+
 --------------------------------------------------------------
-# seccion
-
+# seccion 16 Preparacion de based 
+En esta sección prepararemos la base de datos y un procedimiento "seed" para llenar la misma con información de desarrollo.
+Puntualmente veremos:
+Docker PostgreSQL
+Docker Compose
+Idea de una semilla (seed)
+Crear enumeraciones de base de datos
+Tabla de
+Productos
+Categorías
+Imagenes de productos
+Procedimiento independiente dentro del proyecto de Next
 
 
 ## NOTAS:
-- 
+- Por si acaso alternativa  docker para postgres https://neon.com/ pero el curso usa docker
+- EL REDUCE EN UN ARRAY ES COMO UN FOREACH PERO PERMITE IR ACUMULANDO LOS CAMBIOS
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 17 Paginacion del lado del servidor
+Esta sección es muy importante para comprender el ¿por qué? de la paginación del lado del servidor, pero puntualmente veremos:
+Obtener data del servidor
+Paginar resultados
+Añadir condiciones
+Re-utilización de componentes
+Paginación del lado del servidor
+Manejo de SearchParams
+
+La idea es que podamos compartir un URL de nuestra tienda virtual que apunte a una página en particular y podamos reconstruir exactamente el mismo resultado.
 
 
 
 ## NOTAS:
-- 
+- const totalPages = Math.ceil(totalCount / take); //ceil es para ir al siguiente numero entero si hay un decumal. 4.1 seria 5
+- export const revalidate = 60; // 60 segundos //? Hace que si la data cambia en la bd, en 60 segundos vuelve y hace la peticion para trear data actualizada
+- Al hacer npm run build, aparecen unas sugerencias, hay que cliquear cada una y hacer las modificaciones recomendadas. NO DESACTIVAR EL LINTER
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 18 Pantalla de producto
+En esta sección estaremos trabajando con la pantalla de producto, puntualmente veremos:
+Traer información del producto
+Revalidación de data cada 7 días
+Renderizar del lado del cliente únicamente la información que cambia constantemente
+Server Actions
+Información OpenGraph
+Cambiar Metadata
+Detalles a la hora de compartir enlaces en redes sociales
+Aquí recorreremos la milla extra para poder hacer una pantalla que a la hora de compartirla en redes sociales se vea y se sienta profesional y a la vez, ayudar al SEO.
 
 
 
 ## NOTAS:
-- 
+- Al SEO le gusta los identificadores en las url con mas claridad, con guiones bajos y que describan algo
+- En src\app\(shop)\product\[slug]\page.tsx esta lo de la metadata dinamica con generateMetadata
+- https://www.opengraph.xyz/ es para probar como se ve la aplicacion al compartir en redes sociales, no se puede mandar el link con localhost
+- https://ngrok.com/ toca instalarlo y registrarse, ayuda a exponer la ip publica en la url y se pega en opengraph y listo
+
+
 --------------------------------------------------------------
-# seccion
-
+# seccion 19 Carrito de compras
+En esta sección vamos a trabajar construyendo y manteniendo el carrito de compras del usuario. Aún para este punto no necesitamos credenciales porque lo podemos grabar en cookies, session storage o local storage.
+Puntualmente veremos:
+Zustand con NextJS App Directory
+Problemas de hidratación
+Manejo de estado del lado del cliente
+Manejo del carrito de compras
+Remover y cambiar cantidad desde la pantalla del carrito de compras
+Formato de moneda sin dependencias
 
 
 ## NOTAS:
-- 
+- const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setLoaded(true);// es para asegurarse de que todo se haya renderizado y lo que construye el servidor haga match con lo del cliente
+    //y se soluciona el error de hidratacion que genera la manipulacion de la data en el local storage
+  }, [])
+- La hidratacion se refiere a algun cambio en la pantalla que tiene relacion con data almacenada localmente
+- Formato de moneda solo con javascript:
+export const currencyFormat = (value: number) => {
+
+  return new Intl.NumberFormat("en-US", { //Intl viene javascript
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+  
+};
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 20 NextAuth
+Esta sección está dedicada a la autenticación que haremos a nuestra aplicación.
+Puntualmente veremos:
+Next Auth
+Custom Login
+Custom SignUp
+Dos aproximaciones para manejo de server actions
+	Desde Form Actions
+	Desde funciones
+Varios hooks propios de React Dom
+Estado de formularios sin JavaScript
+Validaciones de formularios
+React Hook Form
+Sesiones
+Extensión de sesiones
+Protección de rutas
+Seed de usuarios
+Encriptación de contraseñas
+Validación de usuarios
 
 
 
 ## NOTAS:
-- 
+- Se maneja validacioes del lado del servidor y del cliente en login y registro, ambas forma son validas. Del lado del servidor es mas compleja
+- Se instala next auth, en el curso se usa una version experimental porque no habia otra manera
+- Se agrega nueva variable de entorno para hacer funcionar el auth next
+- Se configura el archivo src\auth.config.ts
+- Se instala zod para crear un schema de validacion
+- Se usa el hook   const [state, dispatch] = useFormState(authenticate, undefined);
+- Se crea el modelo User en schema.prisma
+- La ruta src\app\api\auth\[...nextauth]\route.ts la parte ...nextauth es un comodin que indica que cualquier endpoint que pase va a caer en ese endpoint
+- Se utiliza https://react-hook-form.com/ para el login
+
+
 --------------------------------------------------------------
-# seccion
-
+# seccion 21 Direccion de Entrega
+En esta sección nos enfocaremos en trabajar con la dirección de entrega de la orden, y aunque se puede resumir simplemente a almacenar la dirección en el localstorage, quiero que vayamos más allá.
+Puntualmente veremos:
+Zustand Address Store
+Persistencia
+Almacenar en base de datos la dirección del usuario
+Relaciones uno a uno
+Relaciones uno a muchos
+Server Actions para:
+Guardar dirección
+Actualizar la dirección
+Borrar la dirección
+React Hook Form
+Conectar Zustand con UseForm con Base de datos
 
 
 ## NOTAS:
-- 
+- npx prisma studio para explorar la base de datos sin otro programa como table plus por ejemplo
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 22 Creacion de Ordenes
+En esta sección vamos a trabajar creando las ordenes de compra de los clientes. Puntualmente veremos:
+Relaciones uno a uno
+Relaciones de uno a muchos
+Transacciones de base de datos
+Transacciones con Prisma
+Manejo de inventario
+Crear ordenes
+Maestro - Detalle
+Server actions
+Consideraciones a la hora de crear la orden basado en un carrito de compras
 
+Es una sección técnicamente intermedia, ya que debemos de considerar muchos factores para crear una orden, y todo debe de salir bien a la hora de guardar en la base de datos y si algo falla, debemos de hacer un rollback de todo, aquí es donde las transacciones nos ayudarán.
 
 
 ## NOTAS:
-- 
+- Se va a hacer rollback si algo sale mal con la orden
+- Se valida la cantidad del stock al momento de comprar y si dos personas compran a la vez, la compra se hace con la primer persona que lo haga
+- Los totales se hacen del lado del servidor para que el usuario no altere la data
+- En lugar de trabajar con prisma se usa tx para guardar en memoria antes de guardar, si no sale bien entonces se hace un rollback en src\actions\order\place-order.ts
+- Tener en cuenta que al aplicacion no considera el stock por tallas sino por el producto en si
+- Queda pendiente mas validaciones
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 23 Pagos PayPal
+El objetivo de esta sección es simple, realizar los cobros mediante un servicio de terceros, en este caso, Paypal.
+Puntualmente veremos:
+Generar el intento de pago
+Realizar el Cobro en PayPal
+Validar el pago desde el lado de PayPal
+Registrar el pago y la fecha de pago
+Marcar la orden como pagada
+Configuraciones en el Sandbox de PayPal
 
+Ahora, muchas personas han pedido otras plataformas de cobros aparte de PayPal, pero en sí, el proceso es similar a lo que verán aquí, también muchos servicios ofrecen webhooks (se ve de este tema en el curso de Node) el cual notifica el pago a un servicio, lo cual es útil en el caso de que la conexión sea interrumpida por el lado del cliente.
+
+Pero de igual manera, cada vez que revisemos la orden, confirmaremos si el pago se ha realizado de nuestro lado.
 
 
 ## NOTAS:
-- 
+- Herramienta para integrar paypal con react de forma oficial: https://www.npmjs.com/package/@paypal/react-paypal-js
+- A paypal no hay que mandarle mas de dos decimales
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 24 Mantenimientos Administrativos
+En esta sección nos enfocaremos en los mantenimientos administrativos de:
+Usuarios:
+Cambiar Roles
 
+Ordenes:
+Ver todas las ordenes realizadas de todos los usuarios
+
+Productos:
+Creación
+Edición
+Carga de archivos mediante server actions
+
+La idea es que nos enfoquemos fuertemente en la parte de la creación y mantenimiento de productos para poder crear y actualizar su información
 
 
 ## NOTAS:
-- 
+- El panel administrativo ve las ordenes de toda la aplicación, pero solo lo ve el administrador
+- Se usa cloudinary para almacenar las imagenes. No se usa la carpeta publica del proyecto porque se recomienda que las imagenes se guarden en un lugar especializado ademas porque la carpeta publica puede ser muy volatil y se puede borrar por accidente cosas
+
+
 --------------------------------------------------------------
-# seccion
+# seccion 25 Desplegar tienda
+Esta es una sección corta, pero el objetivo es desplegar y probar nuestro sitio web en producción, para esto ocuparemos aprovisionar una base de datos PostgreSQL para poder ejecutar el proceso de migración y construcción.
+Puntualmente veremos:
+Pruebas locales
+Solución de warnings y errores
+Aprovisionar una base de datos PostgreSQL
+Desplegar.
+Probar OpenGraph data
 
 
-
-## NOTAS:
-- 
 --------------------------------------------------------------
